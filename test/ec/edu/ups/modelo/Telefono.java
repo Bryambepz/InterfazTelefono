@@ -87,5 +87,5 @@ public class Telefono {
         return "Telefono{" + "codigo=" + codigo + ", numero=" + numero + ", tipo=" + tipo + ", operadora=" + operadora + '}';
     }
     
-    
+        
 }
