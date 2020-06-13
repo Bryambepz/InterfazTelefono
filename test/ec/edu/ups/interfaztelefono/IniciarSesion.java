@@ -36,7 +36,7 @@ public class IniciarSesion extends javax.swing.JFrame {
         cajaUsuario = new javax.swing.JTextField();
         btnIniciar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Iniciar Sesion", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("DialogInput", 1, 24), new java.awt.Color(204, 0, 0))); // NOI18N
 
@@ -112,10 +112,15 @@ public class IniciarSesion extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private AgregarTelefonos agreTelf;
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         if(cajaUsuario.getText().equals("admin") && contraseñaUsu.getText().equals("1234")){
-            JOptionPane.showMessageDialog(null, "Usuario y contraseña correctos");
+            
+            if(agreTelf == null){
+                agreTelf = new AgregarTelefonos();
+            }
+            agreTelf.setVisible(true);
+            //JOptionPane.showMessageDialog(null, "Usuario y contraseña correctos");
         }else{
             JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectas");
         }

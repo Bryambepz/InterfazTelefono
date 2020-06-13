@@ -39,7 +39,7 @@ public class AgregarTelefonos extends javax.swing.JFrame {
         btnAgregar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Agregar Telefono", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dubai Light", 1, 18), new java.awt.Color(204, 0, 0))); // NOI18N
 
@@ -61,6 +61,11 @@ public class AgregarTelefonos extends javax.swing.JFrame {
 
         btnAgregar.setBackground(new java.awt.Color(0, 153, 153));
         btnAgregar.setText("Agregar Telefono");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(0, 102, 102));
         jButton1.setText("Listar Telefonos");
@@ -145,6 +150,10 @@ public class AgregarTelefonos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
      * @param args the command line arguments
