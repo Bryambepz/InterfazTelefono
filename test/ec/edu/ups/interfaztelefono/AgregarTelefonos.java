@@ -5,6 +5,13 @@
  */
 package ec.edu.ups.interfaztelefono;
 
+import ec.edu.ups.Dao.ControladorDao;
+import ec.edu.ups.Dao.IDao;
+import ec.edu.ups.controlador.ControladorTelefono;
+import ec.edu.ups.modelo.Telefono;
+import ec.edu.ups.vista.VistaTelefono;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author braya
@@ -150,9 +157,18 @@ public class AgregarTelefonos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private Telefono modelo=new Telefono();
+    private VistaTelefono vista = new VistaTelefono();
+    private IDao dao = new ControladorDao();
+    private ControladorTelefono ctrlTelf = new ControladorTelefono(modelo, vista, dao);
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
+        int cod=Integer.parseInt(cajaCodigo.getText());
+        String numTelf=cajaNumero.getText();
+        String tipo = cajaTipo.getText();
+        String opera = cajaOperadora.getText();
+        ctrlTelf.crearTelefono();
+        modelo = new Telefono(cod, numTelf, tipo, opera);
+        JOptionPane.showMessageDialog(null, "Datos agregados correctamente");
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**

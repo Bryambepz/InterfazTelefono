@@ -113,6 +113,7 @@ public class IniciarSesion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private AgregarTelefonos agreTelf;
+    
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         if(cajaUsuario.getText().equals("admin") && contraseñaUsu.getText().equals("1234")){
             

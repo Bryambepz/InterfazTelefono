@@ -11,14 +11,14 @@ package ec.edu.ups.modelo;
  */
 public class Telefono {
     private int codigo;
-    private int numero;
+    private String numero;
     private String tipo;
     private String operadora;
 
     public Telefono() {
     }
 
-    public Telefono(int codigo, int numero, String tipo, String operadora) {
+    public Telefono(int codigo, String numero, String tipo, String operadora) {
         this.codigo = codigo;
         this.numero = numero;
         this.tipo = tipo;
@@ -33,11 +33,11 @@ public class Telefono {
         this.codigo = codigo;
     }
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 
@@ -84,7 +84,7 @@ public class Telefono {
 
     @Override
     public String toString() {
-        return "Telefono{" + "codigo=" + codigo + ", numero=" + numero + ", tipo=" + tipo + ", operadora=" + operadora + '}';
+        return "Telefono:\n" + "Codigo: " + codigo + " numero: " + numero + " tipo: " + tipo + " operadora: " + operadora;
     }
     
         

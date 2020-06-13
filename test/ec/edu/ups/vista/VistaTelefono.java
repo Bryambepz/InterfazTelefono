@@ -22,7 +22,7 @@ public class VistaTelefono {
     
     public Telefono agregarTelefono(){
         int codigo = l.nextInt();
-        int numero = l.nextInt();
+        String numero = l.next();
         String tipo=l.next();
         String operadora = l.next();
         return new Telefono(codigo, numero, tipo, operadora);
