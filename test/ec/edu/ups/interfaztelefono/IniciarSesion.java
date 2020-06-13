@@ -5,6 +5,8 @@
  */
 package ec.edu.ups.interfaztelefono;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author braya
@@ -32,22 +34,29 @@ public class IniciarSesion extends javax.swing.JFrame {
         LContraseña = new javax.swing.JLabel();
         contraseñaUsu = new javax.swing.JPasswordField();
         cajaUsuario = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnIniciar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Iniciar Sesion", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("DialogInput", 1, 24), new java.awt.Color(204, 0, 0))); // NOI18N
 
+        LUsuario.setFont(new java.awt.Font("Dubai Light", 1, 18)); // NOI18N
         LUsuario.setText("Ingrese Usuario");
 
+        LContraseña.setFont(new java.awt.Font("Dubai Light", 1, 18)); // NOI18N
         LContraseña.setText("Ingrese Contraseña");
 
         contraseñaUsu.setBackground(new java.awt.Color(0, 153, 153));
 
         cajaUsuario.setBackground(new java.awt.Color(0, 153, 153));
 
-        jButton1.setBackground(new java.awt.Color(19, 133, 133));
-        jButton1.setText("Iniciar Sesion");
+        btnIniciar.setBackground(new java.awt.Color(19, 133, 133));
+        btnIniciar.setText("Iniciar Sesion");
+        btnIniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -58,15 +67,15 @@ public class IniciarSesion extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LUsuario)
                     .addComponent(LContraseña))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cajaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(contraseñaUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cajaUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                    .addComponent(contraseñaUsu))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(113, 113, 113))
+                .addContainerGap(143, Short.MAX_VALUE)
+                .addComponent(btnIniciar)
+                .addGap(135, 135, 135))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,9 +88,9 @@ public class IniciarSesion extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LContraseña)
                     .addComponent(contraseñaUsu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(69, 69, 69)
-                .addComponent(jButton1)
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addGap(67, 67, 67)
+                .addComponent(btnIniciar)
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -89,7 +98,7 @@ public class IniciarSesion extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(128, Short.MAX_VALUE)
+                .addContainerGap(86, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(127, 127, 127))
         );
@@ -98,11 +107,19 @@ public class IniciarSesion extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
+        if(cajaUsuario.getText().equals("admin") && contraseñaUsu.getText().equals("1234")){
+            JOptionPane.showMessageDialog(null, "Usuario y contraseña correctos");
+        }else{
+            JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectas");
+        }
+    }//GEN-LAST:event_btnIniciarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,9 +159,9 @@ public class IniciarSesion extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LContraseña;
     private javax.swing.JLabel LUsuario;
+    private javax.swing.JButton btnIniciar;
     private javax.swing.JTextField cajaUsuario;
     private javax.swing.JPasswordField contraseñaUsu;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
