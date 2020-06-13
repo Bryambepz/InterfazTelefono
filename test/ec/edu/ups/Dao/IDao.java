@@ -5,10 +5,14 @@
  */
 package ec.edu.ups.Dao;
 
+import ec.edu.ups.modelo.Telefono;
+import java.util.List;
+
 /**
  *
  * @author braya
  */
 public interface IDao {
-    
+    public void crearTelefono(Telefono telefono);
+    public List<Telefono> mostrarTelefonos();
 }

@@ -5,10 +5,31 @@
  */
 package ec.edu.ups.controlador;
 
+import ec.edu.ups.Dao.IDao;
+import ec.edu.ups.modelo.Telefono;
+import ec.edu.ups.vista.VistaTelefono;
+
 /**
  *
  * @author braya
  */
 public class ControladorTelefono {
+    private Telefono modelo;
+    private VistaTelefono vista;
+    private IDao dao;
+
+    public ControladorTelefono(Telefono modelo, VistaTelefono vista, IDao dao) {
+        this.modelo = modelo;
+        this.vista = vista;
+        this.dao = dao;
+    }
     
+    public void crearTelefono(){
+        modelo=vista.agregarTelefono();
+        dao.crearTelefono(modelo);
+    }
+    
+    public void mostrartelefonos(){
+        vista.mostrarTelefonos(dao.mostrarTelefonos());
+    }
 }
