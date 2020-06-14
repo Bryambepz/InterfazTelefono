@@ -24,6 +24,7 @@ public class principla {
 
         
         ctrlTelf.crearTelefono();
+        ctrlTelf.crearTelefono();
         System.out.println("Telefonos");
         ctrlTelf.mostrarTelefonos();
     }

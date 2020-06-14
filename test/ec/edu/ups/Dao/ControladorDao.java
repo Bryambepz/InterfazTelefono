@@ -28,13 +28,7 @@ public class ControladorDao implements IDao{
 
     @Override
     public List<Telefono> mostrarTelefonos() {
-        List<Telefono> telefonos = new ArrayList<>();
-        for (Telefono telefonoList : telefonos) {
-            if(telefonoList instanceof Telefono){
-                telefonos.add(telefonoList);
-            }
-        }
-        return telefonos;
+        return new ArrayList<>(telefonoslista.values());
     }
     
 }
