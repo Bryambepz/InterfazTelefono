@@ -5,6 +5,11 @@
  */
 package ec.edu.ups.interfaztelefono;
 
+import ec.edu.ups.Dao.ControladorDao;
+import ec.edu.ups.Dao.IDao;
+import ec.edu.ups.controlador.ControladorTelefono;
+import ec.edu.ups.modelo.Telefono;
+import ec.edu.ups.vista.VistaTelefono;
 import javax.swing.JOptionPane;
 
 /**
@@ -112,7 +117,13 @@ public class IniciarSesion extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
     private AgregarTelefonos agreTelf;
+    Telefono modelo = new Telefono();
+    VistaTelefono vista = new VistaTelefono();
+    IDao dao = new ControladorDao();
+    ControladorTelefono ctrlTelf = new ControladorTelefono(modelo, vista, dao);
+    
     
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         if(cajaUsuario.getText().equals("admin") && contraseñaUsu.getText().equals("1234")){
@@ -126,7 +137,6 @@ public class IniciarSesion extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectas");
         }
     }//GEN-LAST:event_btnIniciarActionPerformed
-
     /**
      * @param args the command line arguments
      */

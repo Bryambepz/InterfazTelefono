@@ -10,7 +10,12 @@ import ec.edu.ups.Dao.IDao;
 import ec.edu.ups.controlador.ControladorTelefono;
 import ec.edu.ups.modelo.Telefono;
 import ec.edu.ups.vista.VistaTelefono;
+import java.awt.HeadlessException;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -157,24 +162,30 @@ public class AgregarTelefonos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private Telefono modelo=new Telefono();
-    private VistaTelefono vista = new VistaTelefono();
-    private IDao dao = new ControladorDao();
-    private ControladorTelefono ctrlTelf = new ControladorTelefono(modelo, vista, dao);
+    
+    private Telefono modelo;
+    private VistaTelefono vista;
+    private IDao dao;
+    private ControladorTelefono ctrlTelf ;
+    
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        int cod=Integer.parseInt(cajaCodigo.getText());
-        String numTelf=cajaNumero.getText();
+        vista = new VistaTelefono();
+        int cod = Integer.parseInt(cajaCodigo.getText());
+        String numTelf = cajaNumero.getText();
         String tipo = cajaTipo.getText();
         String opera = cajaOperadora.getText();
-        ctrlTelf.crearTelefono();
         modelo = new Telefono(cod, numTelf, tipo, opera);
-        JOptionPane.showMessageDialog(null, "Datos agregados correctamente");
+//        modelo = vista.agregarTelefono();
+        ctrlTelf = new ControladorTelefono(modelo, vista, dao);
+        ctrlTelf.crearTelefono();
+            JOptionPane.showMessageDialog(null, "Datos agregados correctamente");
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
