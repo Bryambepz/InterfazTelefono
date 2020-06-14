@@ -10,7 +10,13 @@ import ec.edu.ups.Dao.IDao;
 import ec.edu.ups.controlador.ControladorTelefono;
 import ec.edu.ups.modelo.Telefono;
 import ec.edu.ups.vista.VistaTelefono;
+import java.awt.GraphicsConfiguration;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  *
@@ -119,15 +125,14 @@ public class IniciarSesion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private AgregarTelefonos agreTelf;
-    Telefono modelo = new Telefono();
-    VistaTelefono vista = new VistaTelefono();
-    IDao dao = new ControladorDao();
-    ControladorTelefono ctrlTelf = new ControladorTelefono(modelo, vista, dao);
-    
+    private Telefono modelo = new Telefono();
+    private VistaTelefono vista = new VistaTelefono();
+    private IDao dao = new ControladorDao();
+    private ControladorTelefono ctrlTelf = new ControladorTelefono(modelo, vista, dao);
+
     
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         if(cajaUsuario.getText().equals("admin") && contraseñaUsu.getText().equals("1234")){
-            
             if(agreTelf == null){
                 agreTelf = new AgregarTelefonos();
             }
@@ -163,7 +168,11 @@ public class IniciarSesion extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(IniciarSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        Telefono modelo = new Telefono();
+        VistaTelefono vista = new VistaTelefono();
+        IDao dao = new ControladorDao();
+        ControladorTelefono ctrlTelf = new ControladorTelefono(modelo, vista, dao);
+        AgregarTelefonos agre_Telf = new AgregarTelefonos();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

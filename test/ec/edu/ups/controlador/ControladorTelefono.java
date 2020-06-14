@@ -13,7 +13,7 @@ import ec.edu.ups.vista.VistaTelefono;
  *
  * @author braya
  */
-public class ControladorTelefono {
+public class ControladorTelefono{
     private Telefono modelo;
     private VistaTelefono vista;
     private IDao dao;
@@ -23,13 +23,13 @@ public class ControladorTelefono {
         this.vista = vista;
         this.dao = dao;
     }
-    
-    public void crearTelefono(){
+
+    public void crearTelefono() {
         modelo=vista.agregarTelefono();
-        dao.crearTelefono(modelo);
+        dao.crearTelefono((Telefono) modelo);
     }
-    
-    public void mostrartelefonos(){
+
+    public void mostrarTelefonos() {
         vista.mostrarTelefonos(dao.mostrarTelefonos());
     }
 }

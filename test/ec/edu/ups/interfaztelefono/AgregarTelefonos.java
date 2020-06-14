@@ -49,7 +49,7 @@ public class AgregarTelefonos extends javax.swing.JFrame {
         LOperadora = new javax.swing.JLabel();
         cajaOperadora = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnListar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -79,8 +79,13 @@ public class AgregarTelefonos extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(0, 102, 102));
-        jButton1.setText("Listar Telefonos");
+        btnListar.setBackground(new java.awt.Color(0, 102, 102));
+        btnListar.setText("Listar Telefonos");
+        btnListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -113,7 +118,7 @@ public class AgregarTelefonos extends javax.swing.JFrame {
                                             .addComponent(cajaTipo)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton1)))))
+                                        .addComponent(btnListar)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(88, 88, 88))
         );
@@ -139,7 +144,7 @@ public class AgregarTelefonos extends javax.swing.JFrame {
                 .addGap(76, 76, 76)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
-                    .addComponent(jButton1))
+                    .addComponent(btnListar))
                 .addContainerGap(90, Short.MAX_VALUE))
         );
 
@@ -165,21 +170,33 @@ public class AgregarTelefonos extends javax.swing.JFrame {
     
     private Telefono modelo;
     private VistaTelefono vista;
-    private IDao dao;
-    private ControladorTelefono ctrlTelf ;
+    private IDao cdao = new ControladorDao();
+    private ControladorTelefono ctrlTelf = new ControladorTelefono(modelo, vista, cdao);
     
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         vista = new VistaTelefono();
+        
         int cod = Integer.parseInt(cajaCodigo.getText());
         String numTelf = cajaNumero.getText();
         String tipo = cajaTipo.getText();
         String opera = cajaOperadora.getText();
+        vista.agregarTelefono().setCodigo(cod);
+        vista.agregarTelefono().setNumero(numTelf);
+        vista.agregarTelefono().setTipo(tipo);
+        vista.agregarTelefono().setOperadora(opera);
         modelo = new Telefono(cod, numTelf, tipo, opera);
-//        modelo = vista.agregarTelefono();
-        ctrlTelf = new ControladorTelefono(modelo, vista, dao);
+        modelo = vista.agregarTelefono();
         ctrlTelf.crearTelefono();
-            JOptionPane.showMessageDialog(null, "Datos agregados correctamente");
+        JOptionPane.showMessageDialog(null, "Datos agregados correctamente");
     }//GEN-LAST:event_btnAgregarActionPerformed
+    private ListaTelefonos listTelf;
+    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        
+        if(listTelf == null){
+            listTelf = new ListaTelefonos();
+        }
+        listTelf.setVisible(true);
+    }//GEN-LAST:event_btnListarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,11 +240,11 @@ public class AgregarTelefonos extends javax.swing.JFrame {
     private javax.swing.JLabel LOperadora;
     private javax.swing.JLabel LTipo;
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnListar;
     private javax.swing.JTextField cajaCodigo;
     private javax.swing.JTextField cajaNumero;
     private javax.swing.JTextField cajaOperadora;
     private javax.swing.JTextField cajaTipo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

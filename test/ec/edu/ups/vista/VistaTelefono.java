@@ -29,8 +29,8 @@ public class VistaTelefono {
     }
     
     public void mostrarTelefonos(List<Telefono> telefonos){
-        for (Object telefono : telefonos) {
-            System.out.println("Telefonos: "+telefono+"\n");
+        for (Telefono telefono : telefonos) {
+            System.out.println("Telefonos: "    + telefono);
         }
     }
 }

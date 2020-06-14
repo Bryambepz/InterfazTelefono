@@ -15,22 +15,24 @@ import java.util.List;
  * @author braya
  */
 public class ControladorDao implements IDao{
-    private HashMap<Integer, Telefono> telefonos;
+    private HashMap<Integer,Telefono> telefonoslista;
 
     public ControladorDao() {
-        telefonos = new HashMap<>();
+        telefonoslista = new HashMap<>();
     }
     
     @Override
     public void crearTelefono(Telefono telefono) {
-        telefonos.put(telefono.hashCode(), telefono);
+        telefonoslista.put(telefono.hashCode(), telefono);
     }
 
     @Override
     public List<Telefono> mostrarTelefonos() {
         List<Telefono> telefonos = new ArrayList<>();
-        for (Telefono telefono : telefonos) {
-            telefonos.add(telefono);
+        for (Telefono telefonoList : telefonos) {
+            if(telefonoList instanceof Telefono){
+                telefonos.add(telefonoList);
+            }
         }
         return telefonos;
     }
