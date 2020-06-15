@@ -6,6 +6,7 @@
 package ec.edu.ups.vista;
 
 import ec.edu.ups.modelo.Telefono;
+import java.awt.TextField;
 import java.util.List;
 import java.util.Scanner;
 
@@ -20,11 +21,9 @@ public class VistaTelefono {
         l=new Scanner(System.in);
     }
     
-    public Telefono agregarTelefono(){
-        int codigo = l.nextInt();
-        String numero = l.next();
-        String tipo=l.next();
-        String operadora = l.next();
+    public Telefono agregarTelefono(int codigo, String numero, String tipo, String operadora){
+//        Telefono telf = new Telefono();
+//        telf.setCodigo(codigo);
         return new Telefono(codigo, numero, tipo, operadora);
     }
     

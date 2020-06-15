@@ -14,5 +14,6 @@ import java.util.List;
  */
 public interface IDao {
     public void crearTelefono(Telefono telefono);
+    //public Telefono leerTelefonos();
     public List<Telefono> mostrarTelefonos();
 }

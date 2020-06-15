@@ -168,11 +168,7 @@ public class IniciarSesion extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(IniciarSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        Telefono modelo = new Telefono();
-        VistaTelefono vista = new VistaTelefono();
-        IDao dao = new ControladorDao();
-        ControladorTelefono ctrlTelf = new ControladorTelefono(modelo, vista, dao);
-        AgregarTelefonos agre_Telf = new AgregarTelefonos();
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

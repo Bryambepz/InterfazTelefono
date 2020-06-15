@@ -5,6 +5,14 @@
  */
 package ec.edu.ups.interfaztelefono;
 
+import ec.edu.ups.Dao.ControladorDao;
+import ec.edu.ups.Dao.IDao;
+import ec.edu.ups.controlador.ControladorTelefono;
+import ec.edu.ups.modelo.Telefono;
+import ec.edu.ups.vista.VistaTelefono;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author braya
@@ -14,10 +22,26 @@ public class ListaTelefonos extends javax.swing.JFrame {
     /**
      * Creates new form ListaTelefonos
      */
-    public ListaTelefonos() {
+    public ListaTelefonos(IDao dao) {
         initComponents();
+        this.dao = dao;
+        DefaultListModel lista = lista();
+        JListaTelefonos.setModel(lista);
+        this.validate();
     }
-
+        
+    private DefaultListModel lista(){
+        DefaultListModel lista = new DefaultListModel();
+        
+        ArrayList telefonos =(ArrayList)dao.mostrarTelefonos();
+        for (int i = 0; i <telefonos.size(); i++) {
+            lista.add(i, telefonos);
+        }
+        //JListaTelefonos.setModel(lista);
+        return lista;
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,11 +57,6 @@ public class ListaTelefonos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         JListaTelefonos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Listado Telefonos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dubai Light", 1, 18), new java.awt.Color(204, 0, 0))); // NOI18N
-        JListaTelefonos.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         JListaTelefonos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(JListaTelefonos);
         JListaTelefonos.getAccessibleContext().setAccessibleDescription("");
@@ -48,20 +67,25 @@ public class ListaTelefonos extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private Telefono modelo;
+    private VistaTelefono vista;
+    private IDao dao;
+    private ControladorTelefono ctrlTelf = new ControladorTelefono(modelo, vista, dao);
+    
     /**
      * @param args the command line arguments
      */
@@ -92,7 +116,7 @@ public class ListaTelefonos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListaTelefonos().setVisible(true);
+                //new ListaTelefonos().setVisible(true);
             }
         });
     }

@@ -10,7 +10,10 @@ import ec.edu.ups.Dao.IDao;
 import ec.edu.ups.controlador.ControladorTelefono;
 import ec.edu.ups.modelo.Telefono;
 import ec.edu.ups.vista.VistaTelefono;
+import java.awt.Component;
 import java.awt.HeadlessException;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -29,7 +32,9 @@ public class AgregarTelefonos extends javax.swing.JFrame {
     public AgregarTelefonos() {
         initComponents();
     }
-
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -167,33 +172,29 @@ public class AgregarTelefonos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+    private IniciarSesion is;
     private Telefono modelo;
     private VistaTelefono vista;
-    private IDao cdao = new ControladorDao();
-    private ControladorTelefono ctrlTelf = new ControladorTelefono(modelo, vista, cdao);
+    private IDao dao = new ControladorDao();
+    private ControladorTelefono ctrlTelf = new ControladorTelefono(modelo, vista, dao);
     
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         vista = new VistaTelefono();
-        
         int cod = Integer.parseInt(cajaCodigo.getText());
         String numTelf = cajaNumero.getText();
         String tipo = cajaTipo.getText();
         String opera = cajaOperadora.getText();
-        vista.agregarTelefono().setCodigo(cod);
-        vista.agregarTelefono().setNumero(numTelf);
-        vista.agregarTelefono().setTipo(tipo);
-        vista.agregarTelefono().setOperadora(opera);
-        modelo = new Telefono(cod, numTelf, tipo, opera);
-        modelo = vista.agregarTelefono();
-        ctrlTelf.crearTelefono();
+        vista = new VistaTelefono();
+        modelo = vista.agregarTelefono(cod, numTelf, tipo, opera);
+        dao.crearTelefono(modelo);
+        //ctrlTelf.crearTelefono();
         JOptionPane.showMessageDialog(null, "Datos agregados correctamente");
     }//GEN-LAST:event_btnAgregarActionPerformed
+    
     private ListaTelefonos listTelf;
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
-        
         if(listTelf == null){
-            listTelf = new ListaTelefonos();
+            listTelf = new ListaTelefonos(dao);
         }
         listTelf.setVisible(true);
     }//GEN-LAST:event_btnListarActionPerformed

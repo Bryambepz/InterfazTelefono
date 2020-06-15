@@ -25,7 +25,7 @@ public class ControladorTelefono{
     }
 
     public void crearTelefono() {
-        modelo=vista.agregarTelefono();
+        //modelo=vista.agregarTelefono();
         dao.crearTelefono((Telefono) modelo);
     }
 

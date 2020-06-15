@@ -26,6 +26,12 @@ public class ControladorDao implements IDao{
         telefonoslista.put(telefono.hashCode(), telefono);
     }
 
+//    @Override
+//    public Telefono leerTelefonos() {
+//        return telefonoslista;
+//    }
+
+    
     @Override
     public List<Telefono> mostrarTelefonos() {
         return new ArrayList<>(telefonoslista.values());
